@@ -40,3 +40,7 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files: app/build/outputs/apk/release/app-release.apk
+
+      - name: Clean up keystore
+        if: always()
+        run: rm -f $GITHUB_WORKSPACE/keystore.jks
