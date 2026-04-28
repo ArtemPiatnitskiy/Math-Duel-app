@@ -13,11 +13,10 @@ jobs:
           distribution: 'temurin'
           cache: 'gradle'
 
+      # ВОТ ЭТОТ ШАГ НУЖНО ДОБАВИТЬ:
+      - name: Make gradlew executable
+        run: chmod +x gradlew
+
       - name: Build APK
         run: ./gradlew assembleDebug
 
-      - name: Upload APK
-        uses: actions/upload-artifact@v4
-        with:
-          name: my-app-apk
-          path: app/build/outputs/apk/debug/*.apk
